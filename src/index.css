@@ -1,0 +1,64 @@
+@import url("https://fonts.cdnfonts.com/css/general-sans");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "circular", sans-serif;
+  width: 100dvw;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+@layer base {
+  @font-face {
+    font-family: "Circular";
+    src: url("/fonts/circularweb-book.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "False";
+    src: url("/fonts/ClashDisplay-Bold.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Justus";
+    src: url("/fonts/Justus-Versalitas.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "SilkSerif";
+    src: url("/fonts/silkserif-regularitalic-webfont.ttf") format("truetype");
+  }
+}
+
+@layer utilities {
+  .bordr {
+    border-radius: 50%;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 1.5s ease-in-out;
+  }
+
+  .rr {
+    border-radius: 40px;
+  }
+
+  .bc {
+    background-image: url("./public/img/ss3.png");
+    background-image: "cover";
+    background-position: "center";
+    background-repeat: "no-repeat";
+  }
+
+  .special-font ss {
+    font-family: "silkserif";
+  }
+
+  .special-font cc {
+    font-family: "circular";
+  }
+  .special-font sss {
+    font-family: "silkserif";
+    color: limegreen;
+  }
+}
