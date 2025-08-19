@@ -4,7 +4,7 @@ import { TiLocationArrow } from "react-icons/ti";
 import Button from "./Button"; // Assuming this is used elsewhere or will be removed if not needed
 import { CgMenu } from "react-icons/cg"; // Not used in Navbar, can be removed
 
-const Navbar = () => {
+const Navbar = ({ onOpenLogin, onOpenRegister }) => {
   const navContainerRef = useRef(null);
 
   const handleProductClick = () => {
@@ -36,7 +36,7 @@ const Navbar = () => {
               <LiquidGlassButton
                 id="Register"
                 title="Register"
-                // onClick={() => {} } // Add your register logic here
+                onClick={onOpenRegister}
               />
             </div>
 
@@ -51,7 +51,7 @@ const Navbar = () => {
                 id="Log-In"
                 title="LogIn"
                 variant="primary"
-                // onClick={() => {} } // Add your login logic here
+                onClick={onOpenLogin}
               />
             </div>
           </div>

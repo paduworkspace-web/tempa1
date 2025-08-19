@@ -4,7 +4,7 @@ import gsap from "gsap";
 import React, { useRef, useState } from "react";
 import { CgMenu } from "react-icons/cg";
 
-const MiniNavbar = () => {
+const MiniNavbar = ({ onOpenLogin, onOpenRegister }) => {
   const navRef = useRef(null);
   const linksRef = useRef([]);
   const contactRef = useRef(null);
@@ -16,8 +16,8 @@ const MiniNavbar = () => {
     { name: "services", href: "#services" },
     { name: "Testimonial", href: "#testimonial"},
     { name: "about", href: "#about" },
-    { name: "Register", href: "#register" },
-    { name: "Log in", href: "#login" }
+    { name: "Register", href: "#register", onClick: onOpenRegister },
+    { name: "Log in", href: "#login", onClick: onOpenLogin }
   ];
 
   useGSAP(() => {
@@ -102,8 +102,14 @@ const MiniNavbar = () => {
             <div key={index} ref={(ele) => (linksRef.current[index] = ele)}>
               <a
                 className="transition-all duration-300 cursor-pointer hover:text-white block"
-                href={item.href}
-                onClick={closeMenu}
+                href={item.onClick ? "#" : item.href}
+                onClick={(e) => {
+                  if (item.onClick) {
+                    e.preventDefault();
+                    item.onClick();
+                  }
+                  closeMenu();
+                }}
               >
                 {item.name}
               </a>
