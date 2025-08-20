@@ -13,6 +13,11 @@ import RegisterPage from './pages/auth/RegisterPage';
 import DashboardPage from './pages/dashboard/DashboardPage';
 import AboutPage from './pages/common/AboutPage';
 import NotFoundPage from './pages/common/NotFoundPage';
+import MeditationLibrary from './pages/meditation/MeditationLibrary';
+import TherapistList from './pages/therapy/TherapistList';
+import ForumHome from './pages/community/ForumHome';
+import ChatbotPage from './pages/chatbot/ChatbotPage';
+import ContactForm from './pages/contact/ContactForm';
 
 const App = () => {
   return (
@@ -37,6 +42,27 @@ const App = () => {
                   <DashboardPage />
                 </ProtectedRoute>
               } />
+              <Route path="meditations" element={
+                <ProtectedRoute>
+                  <MeditationLibrary />
+                </ProtectedRoute>
+              } />
+              <Route path="therapists" element={
+                <ProtectedRoute>
+                  <TherapistList />
+                </ProtectedRoute>
+              } />
+              <Route path="forum" element={
+                <ProtectedRoute>
+                  <ForumHome />
+                </ProtectedRoute>
+              } />
+              <Route path="chat" element={
+                <ProtectedRoute>
+                  <ChatbotPage />
+                </ProtectedRoute>
+              } />
+              <Route path="contact" element={<ContactForm />} />
             </Route>
             
             {/* 404 Route */}
