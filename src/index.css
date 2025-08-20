@@ -7,7 +7,7 @@
 body {
   font-family: "circular", sans-serif;
   width: 100dvw;
-  background-color: #fff;
+  background-color: #000;
   overflow-x: hidden;
 }
 
@@ -62,6 +62,14 @@ body {
     color: limegreen;
   }
 
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
   @keyframes fadeInUp {
     from {
       opacity: 0;
