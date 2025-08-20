@@ -10,6 +10,7 @@ import AdminRoute from './components/auth/AdminRoute';
 import HomePage from './pages/common/HomePage';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
+import ServicesPage from './pages/services/ServicesPage';
 import DashboardPage from './pages/dashboard/DashboardPage';
 import AdminDashboard from './pages/dashboard/AdminDashboard';
 import ProfilePage from './pages/auth/ProfilePage';
@@ -19,9 +20,14 @@ import AboutPage from './pages/common/AboutPage';
 import NotFoundPage from './pages/common/NotFoundPage';
 import MeditationLibrary from './pages/meditation/MeditationLibrary';
 import TherapistList from './pages/therapy/TherapistList';
+import BookingForm from './pages/therapy/BookingForm';
+import MyBookings from './pages/therapy/MyBookings';
 import ForumHome from './pages/community/ForumHome';
+import PostDetail from './pages/community/PostDetail';
+import CreatePost from './pages/community/CreatePost';
 import ChatbotPage from './pages/chatbot/ChatbotPage';
 import ContactForm from './pages/contact/ContactForm';
+import ContactManager from './pages/contact/ContactManager';
 
 const App = () => {
   return (
@@ -33,6 +39,7 @@ const App = () => {
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="about" element={<AboutPage />} />
+              <Route path="services" element={<ServicesPage />} />
             </Route>
             
             {/* Auth Routes (no layout) */}
@@ -66,9 +73,29 @@ const App = () => {
                   <TherapistList />
                 </ProtectedRoute>
               } />
+              <Route path="book-therapy/:therapistId" element={
+                <ProtectedRoute>
+                  <BookingForm />
+                </ProtectedRoute>
+              } />
+              <Route path="my-bookings" element={
+                <ProtectedRoute>
+                  <MyBookings />
+                </ProtectedRoute>
+              } />
               <Route path="forum" element={
                 <ProtectedRoute>
                   <ForumHome />
+                </ProtectedRoute>
+              } />
+              <Route path="forum/:id" element={
+                <ProtectedRoute>
+                  <PostDetail />
+                </ProtectedRoute>
+              } />
+              <Route path="create-post" element={
+                <ProtectedRoute>
+                  <CreatePost />
                 </ProtectedRoute>
               } />
               <Route path="chat" element={
@@ -89,6 +116,11 @@ const App = () => {
               <Route path="admin/meditations" element={
                 <AdminRoute>
                   <MeditationManager />
+                </AdminRoute>
+              } />
+              <Route path="admin/contacts" element={
+                <AdminRoute>
+                  <ContactManager />
                 </AdminRoute>
               } />
             </Route>

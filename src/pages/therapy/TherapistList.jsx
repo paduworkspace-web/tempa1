@@ -156,7 +156,9 @@ const TherapistList = () => {
 
                 <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all flex items-center justify-center">
                   <Calendar className="h-4 w-4 mr-2" />
-                  Book Session
+                  <Link to={`/book-therapy/${therapist.id}`} className="w-full">
+                    Book Session
+                  </Link>
                 </button>
               </div>
             </div>

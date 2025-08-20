@@ -43,6 +43,9 @@ const Navbar = () => {
               <Link to="/" className="text-gray-700 hover:text-purple-600 transition-colors">
                 Home
               </Link>
+              <Link to="/services" className="text-gray-700 hover:text-purple-600 transition-colors">
+                Services
+              </Link>
               <Link to="/about" className="text-gray-700 hover:text-purple-600 transition-colors">
                 About
               </Link>
@@ -57,6 +60,9 @@ const Navbar = () => {
                   </Link>
                   <Link to="/therapists" className="text-gray-700 hover:text-purple-600 transition-colors">
                     Therapy
+                  </Link>
+                  <Link to="/my-bookings" className="text-gray-700 hover:text-purple-600 transition-colors">
+                    My Bookings
                   </Link>
                   <Link to="/forum" className="text-gray-700 hover:text-purple-600 transition-colors">
                     Community
@@ -112,6 +118,9 @@ const Navbar = () => {
                 <Link to="/" className="text-gray-700 hover:text-purple-600 transition-colors">
                   Home
                 </Link>
+                <Link to="/services" className="text-gray-700 hover:text-purple-600 transition-colors">
+                  Services
+                </Link>
                 <Link to="/about" className="text-gray-700 hover:text-purple-600 transition-colors">
                   About
                 </Link>
@@ -126,6 +135,9 @@ const Navbar = () => {
                     </Link>
                     <Link to="/therapists" className="text-gray-700 hover:text-purple-600 transition-colors">
                       Therapy
+                    </Link>
+                    <Link to="/my-bookings" className="text-gray-700 hover:text-purple-600 transition-colors">
+                      My Bookings
                     </Link>
                     <Link to="/forum" className="text-gray-700 hover:text-purple-600 transition-colors">
                       Community
