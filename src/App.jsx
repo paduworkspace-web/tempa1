@@ -11,6 +11,10 @@ import HomePage from './pages/common/HomePage';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import DashboardPage from './pages/dashboard/DashboardPage';
+import AdminDashboard from './pages/dashboard/AdminDashboard';
+import ProfilePage from './pages/auth/ProfilePage';
+import MeditationPlayer from './pages/meditation/MeditationPlayer';
+import MeditationManager from './pages/meditation/MeditationManager';
 import AboutPage from './pages/common/AboutPage';
 import NotFoundPage from './pages/common/NotFoundPage';
 import MeditationLibrary from './pages/meditation/MeditationLibrary';
@@ -42,9 +46,19 @@ const App = () => {
                   <DashboardPage />
                 </ProtectedRoute>
               } />
+              <Route path="profile" element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              } />
               <Route path="meditations" element={
                 <ProtectedRoute>
                   <MeditationLibrary />
+                </ProtectedRoute>
+              } />
+              <Route path="meditations/:id" element={
+                <ProtectedRoute>
+                  <MeditationPlayer />
                 </ProtectedRoute>
               } />
               <Route path="therapists" element={
@@ -63,6 +77,20 @@ const App = () => {
                 </ProtectedRoute>
               } />
               <Route path="contact" element={<ContactForm />} />
+            </Route>
+            
+            {/* Admin Routes */}
+            <Route path="/" element={<Layout />}>
+              <Route path="admin" element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              } />
+              <Route path="admin/meditations" element={
+                <AdminRoute>
+                  <MeditationManager />
+                </AdminRoute>
+              } />
             </Route>
             
             {/* 404 Route */}
