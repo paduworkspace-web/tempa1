@@ -1,67 +1,50 @@
-import React, { Component } from "react";
-import { useState } from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import MiniNavbar from "./components/MiniNavbar";
-import Services from "./components/Services";
-import Testimonial from "./components/Testimonial";
-import LoginModal from "./components/LoginModal";
-import RegisterModal from "./components/RegisterModal";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { NotificationProvider } from './context/NotificationContext';
+import Layout from './components/layout/Layout';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import AdminRoute from './components/auth/AdminRoute';
+
+// Pages
+import HomePage from './pages/common/HomePage';
+import LoginPage from './pages/auth/LoginPage';
+import RegisterPage from './pages/auth/RegisterPage';
+import DashboardPage from './pages/dashboard/DashboardPage';
+import AboutPage from './pages/common/AboutPage';
+import NotFoundPage from './pages/common/NotFoundPage';
 
 const App = () => {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-
-  const openLoginModal = () => {
-    setIsLoginModalOpen(true);
-    setIsRegisterModalOpen(false);
-  };
-
-  const openRegisterModal = () => {
-    setIsRegisterModalOpen(true);
-    setIsLoginModalOpen(false);
-  };
-
-  const closeModals = () => {
-    setIsLoginModalOpen(false);
-    setIsRegisterModalOpen(false);
-  };
-
   return (
-    <div className="relative w-screen min-h-screen overflow-x-hidden">
-      <MiniNavbar onOpenLogin={openLoginModal} onOpenRegister={openRegisterModal} />
-      <Navbar onOpenLogin={openLoginModal} onOpenRegister={openRegisterModal} />
-
-      {/* Wrap sections in divs with proper IDs for navigation */}
-      <section id="home">
-        <Hero />
-      </section>
-
-      <section id="services">
-        <Services />
-      </section>
-
-      <section id="testimonial">
-        <Testimonial />
-      </section>
-
-      <section id="about">
-        <About />
-      </section>
-
-      {/* Modals */}
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        onClose={closeModals}
-        onSwitchToRegister={openRegisterModal}
-      />
-      <RegisterModal
-        isOpen={isRegisterModalOpen}
-        onClose={closeModals}
-        onSwitchToLogin={openLoginModal}
-      />
-    </div>
+    <NotificationProvider>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="about" element={<AboutPage />} />
+            </Route>
+            
+            {/* Auth Routes (no layout) */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            
+            {/* Protected Routes */}
+            <Route path="/" element={<Layout />}>
+              <Route path="dashboard" element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              } />
+            </Route>
+            
+            {/* 404 Route */}
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </NotificationProvider>
   );
 };
 
